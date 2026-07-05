@@ -8,7 +8,7 @@ desktop.ini
 .idea/
 *.swp
 
-# Chrome extension packaging artifacts (never commit the private signing key)
+# Chrome extension packaging artifacts
 *.pem
 *.crx
 *.zip
