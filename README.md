@@ -20,7 +20,7 @@ A Chrome extension that locks tab switching behind a typed passphrase, so you ha
 ## Notes
 
 - Reload any tabs that were already open before you loaded the extension — content scripts don't inject into existing pages until they're reloaded.
-- Allowed sites match subdomains too (allowing `example.com` also allows `docs.example.com
+- Allowed sites match subdomains too (allowing `example.com` also allows `docs.example.com`)
 
 ## Permissions
 
