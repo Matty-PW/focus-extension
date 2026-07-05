@@ -3,7 +3,6 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
 
     // checks if focus mode is already on
     chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites"], (data) => {
-        console.log("tab switched")
         // only act if focus mode is on AND a phrase has been set
         if (!data.focusActive || !data.focusPhrase) return
 
