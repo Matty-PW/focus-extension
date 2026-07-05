@@ -4,7 +4,7 @@ A Chrome extension that locks tab switching behind a typed passphrase, so you ha
 
 ## How it works
 
-- Turn on Focus Mode and set a passphrase in the popup.
+- Turn on Focus Mode and set a focus phrase in the popup.
 - Every time you switch to a different tab, a full-screen overlay appears asking you to retype the phrase.
 - Typing it correctly disables Focus Mode and dismisses the overlay.
 - You can allowlist specific sites (e.g. docs, revision tools) so they never trigger the overlay.
