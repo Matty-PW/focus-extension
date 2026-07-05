@@ -1,0 +1,173 @@
+/* Focus Mode shared theme - terminal design on a calm charcoal/sage palette.
+   Linked by popup.html (and any future options page) via <link>,
+   fetched + injected into the lock overlay's shadow root by content.js.
+   :host mirrors :root so the tokens resolve inside the shadow root too. */
+
+:root,
+:host {
+    --fm-bg: #0f1115;
+    --fm-surface: #161a20;
+    --fm-border: #262b33;
+    --fm-green: #7fb582;      /* single accent: desaturated sage */
+    --fm-green-dim: #8b93a1;  /* secondary text: neutral gray */
+    --fm-text: #e2e5e9;
+    --fm-mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
+}
+
+/* ---- popup / options page shell ---- */
+
+.fm-popup {
+    font-family: var(--fm-mono);
+    width: 280px;
+    margin: 0;
+    padding: 18px;
+    background: var(--fm-bg);
+    color: var(--fm-text);
+}
+
+.fm-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 14px;
+    color: var(--fm-green);
+}
+.fm-title::before {content: "> ";}
+
+.fm-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    margin: 18px 0 8px;
+    color: var(--fm-green-dim);
+}
+
+/* ---- shared components ---- */
+
+.fm-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    background: var(--fm-surface);
+    border: 1px solid var(--fm-border);
+    border-radius: 3px;
+    color: var(--fm-text);
+    font-family: inherit;
+    font-size: 13px;
+    caret-color: var(--fm-green);
+}
+.fm-input::placeholder {color: var(--fm-green-dim);}
+.fm-input:focus {outline: none; border-color: var(--fm-green);}
+
+.fm-btn {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 9px;
+    background: var(--fm-surface);
+    border: 1px solid var(--fm-border);
+    border-radius: 3px;
+    color: var(--fm-text);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.fm-btn:hover {border-color: var(--fm-green);}
+.fm-btn--primary {border-color: var(--fm-green); color: var(--fm-green);}
+.fm-btn--active {background: var(--fm-green); border-color: var(--fm-green); color: var(--fm-bg);}
+
+.fm-status {
+    font-size: 12px;
+    color: var(--fm-green-dim);
+    text-align: center;
+    min-height: 16px;
+}
+
+/* feedback line: ok = sage accent, err = terminal inverse video */
+.fm-feedback {
+    font-family: inherit;
+    font-size: 13px;
+    margin: 0;
+    min-height: 20px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    color: var(--fm-green-dim);
+}
+.fm-feedback--ok {color: var(--fm-green);}
+.fm-feedback--err {background: var(--fm-green); color: var(--fm-bg);}
+
+/* popup vertical rhythm (site-row children opt out) */
+.fm-popup .fm-input {margin-bottom: 10px;}
+.fm-popup .fm-btn {margin-bottom: 8px;}
+.fm-popup .fm-site-row .fm-input,
+.fm-popup .fm-site-row .fm-btn {margin-bottom: 0;}
+
+/* ---- allowed sites list ---- */
+
+.fm-site-row {display: flex; gap: 8px; margin-bottom: 10px;}
+.fm-site-row .fm-input {flex: 1;}
+.fm-site-row .fm-btn {width: auto; padding: 0 14px;}
+
+.fm-list {list-style: none; padding: 0; margin: 0; max-height: 120px; overflow-y: auto;}
+.fm-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--fm-surface);
+    border: 1px solid var(--fm-border);
+    border-radius: 3px;
+    padding: 7px 12px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.fm-remove {
+    background: transparent;
+    border: none;
+    padding: 0 4px;
+    color: var(--fm-green-dim);
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+}
+.fm-remove:hover {color: var(--fm-green);}
+
+.fm-empty {font-size: 12px; color: var(--fm-green-dim); margin: 0 0 8px;}
+
+/* ---- lock overlay (inside content.js shadow root) ---- */
+
+.fm-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    background: var(--fm-bg);
+    font-family: var(--fm-mono);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--fm-text);
+}
+
+.fm-overlay-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--fm-green);
+}
+.fm-overlay-title::before {content: "> ";}
+
+.fm-overlay-sub {
+    font-size: 13px;
+    margin: 0;
+    text-align: center;
+    color: var(--fm-green-dim);
+}
+
+.fm-overlay .fm-input {
+    width: 320px;
+    padding: 11px 14px;
+    font-size: 14px;
+    text-align: center;
+}

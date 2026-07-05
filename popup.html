@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="theme.css">
+    </head>
+    <body class="fm-popup">
+        <h2 class="fm-title">Focus Mode</h2>
+        <input type="text" id="phrase-input" class="fm-input"
+            placeholder="Set your focus phrase" />
+        <button id="save-btn" class="fm-btn">Save Phrase</button>
+        <button id="toggle-btn" class="fm-btn fm-btn--primary">Enable Focus Mode</button>
+        <p id="status" class="fm-status"></p>
+
+        <h3 class="fm-subtitle">Allowed sites (no popup)</h3>
+        <div class="fm-site-row">
+            <input type="text" id="site-input" class="fm-input" placeholder="example.com" />
+            <button id="add-site-btn" class="fm-btn">Add</button>
+        </div>
+        <button id="add-current-btn" class="fm-btn">Allow Current Site</button>
+        <p id="allowed-empty" class="fm-empty">No allowed sites yet</p>
+        <ul id="allowed-list" class="fm-list"></ul>
+
+        <script src="popup.js"></script>
+    </body>
+</html>

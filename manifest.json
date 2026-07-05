@@ -1,0 +1,39 @@
+{
+    "manifest_version": 3,
+    "name": "Focus Mode",
+    "description": "Stay on task with a phrase based tab lock",
+    "version": "1.0",
+    "permissions": ["tabs", "storage", "activeTab"],
+    "background": {
+        "service_worker": "background.js"
+    },
+
+    "icons": {
+        "16": "Padlock_16x.png",
+        "48": "Padlock_48x.png",
+        "128": "Padlock_128x.png"
+    },
+
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "Padlock_16x.png",
+            "48": "Padlock_48x.png",
+            "128": "Padlock_128x.png"
+        }
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+
+    "web_accessible_resources": [
+        {
+            "resources": ["theme.css"],
+            "matches": ["<all_urls>"]
+        }
+    ]
+}
