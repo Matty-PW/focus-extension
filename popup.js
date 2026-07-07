@@ -2,6 +2,7 @@ const toggleBtn = document.getElementById("toggle-btn")
 const saveBtn = document.getElementById("save-btn")
 const phraseInput = document.getElementById("phrase-input")
 const status = document.getElementById("status")
+const keepOnCheck = document.getElementById("keep-on-check")
 const siteInput = document.getElementById("site-input")
 const addSiteBtn = document.getElementById("add-site-btn")
 const addCurrentBtn = document.getElementById("add-current-btn")
@@ -9,12 +10,18 @@ const allowedList = document.getElementById("allowed-list")
 const allowedEmpty = document.getElementById("allowed-empty")
 
 // when popup opens, load saved settings
-chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites"], (data) => {
+chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites", "keepFocusOnUnlock"], (data) => {
     if (data.focusPhrase) {
         phraseInput.value = data.focusPhrase
     }
     updateToggleUI(data.focusActive)
+    keepOnCheck.checked = Boolean(data.keepFocusOnUnlock)
     renderAllowedSites(data.allowedSites || [])
+})
+
+// choose what a correct phrase does: turn focus mode off, or only unlock that tab
+keepOnCheck.addEventListener("change", () => {
+    chrome.storage.local.set({keepFocusOnUnlock: keepOnCheck.checked})
 })
 
 // save the phrase
