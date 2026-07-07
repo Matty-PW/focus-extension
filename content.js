@@ -4,12 +4,12 @@ let overlayActive = false
 if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.onMessage) {
     chrome.runtime.onMessage.addListener((msg) => {
         if (msg.action === "showOverlay") {
-            showOverlay(msg.phrase)
+            showOverlay(msg.phrase, msg.keepFocusOnUnlock)
         }
     })
 }
 // function that shows the overlay
-function showOverlay(phrase) {
+function showOverlay(phrase, keepFocusOnUnlock) {
     if (overlayActive) return
     overlayActive = true
 
@@ -65,12 +65,17 @@ function showOverlay(phrase) {
     const feedback = shadow.getElementById("focus-feedback")
     input.focus()
 
-    // correct phrase entered - turns focus mode off and closes the overlay
+    // correct phrase entered - closes the overlay, and turns focus mode off
+    // unless the user chose to keep it on (then only this tab unlocks)
     function handleCorrectPhrase() {
         feedback.classList.remove("fm-feedback--err")
         feedback.classList.add("fm-feedback--ok")
-        feedback.textContent = "Correct phrase - disabling focus mode"
-        chrome.storage.local.set({focusActive: false})
+        if (keepFocusOnUnlock) {
+            feedback.textContent = "Correct phrase - unlocking this tab"
+        } else {
+            feedback.textContent = "Correct phrase - disabling focus mode"
+            chrome.storage.local.set({focusActive: false})
+        }
         setTimeout(() => {
             host.remove()
             overlayActive = false
