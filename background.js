@@ -2,7 +2,7 @@
 chrome.tabs.onActivated.addListener((activeInfo) => {
 
     // checks if focus mode is already on
-    chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites"], (data) => {
+    chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites", "keepFocusOnUnlock"], (data) => {
         // only act if focus mode is on AND a phrase has been set
         if (!data.focusActive || !data.focusPhrase) return
 
@@ -15,7 +15,8 @@ chrome.tabs.onActivated.addListener((activeInfo) => {
             setTimeout(() => {
                 chrome.tabs.sendMessage(activeInfo.tabId, {
                     action: "showOverlay",
-                    phrase: data.focusPhrase
+                    phrase: data.focusPhrase,
+                    keepFocusOnUnlock: Boolean(data.keepFocusOnUnlock)
                 }).catch(() =>{
                     // some tabs (new tab page, chrome:// pages) cant receive message - ignore the error
                 })
@@ -34,6 +35,5 @@ function isAllowedSite(url, allowedSites) {
     } catch {
         return false
     }
-
     return allowedSites.some((site) => hostname === site || hostname.endsWith("." + site))
 }
