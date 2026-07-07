@@ -1,21 +1,15 @@
-/* Focus Mode shared theme - terminal design on a calm charcoal/sage palette.
-   Linked by popup.html (and any future options page) via <link>,
-   fetched + injected into the lock overlay's shadow root by content.js.
-   :host mirrors :root so the tokens resolve inside the shadow root too. */
-
 :root,
 :host {
     --fm-bg: #0f1115;
     --fm-surface: #161a20;
     --fm-border: #262b33;
-    --fm-green: #7fb582;      /* single accent: desaturated sage */
-    --fm-green-dim: #8b93a1;  /* secondary text: neutral gray */
+    --fm-green: #7fb582;      /* accent: sage */
+    --fm-green-dim: #8b93a1;  /* secondary text: gray */
     --fm-text: #e2e5e9;
     --fm-mono: ui-monospace, "Cascadia Mono", Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
 }
 
-/* ---- popup / options page shell ---- */
-
+/* popup / options page shell */
 .fm-popup {
     font-family: var(--fm-mono);
     width: 280px;
@@ -40,7 +34,7 @@
     color: var(--fm-green-dim);
 }
 
-/* ---- shared components ---- */
+/* shared components */
 
 .fm-input {
     width: 100%;
@@ -81,7 +75,7 @@
     min-height: 16px;
 }
 
-/* feedback line: ok = sage accent, err = terminal inverse video */
+/* feedback: ok = sage accent, error = terminal inverse */
 .fm-feedback {
     font-family: inherit;
     font-size: 13px;
@@ -100,7 +94,7 @@
 .fm-popup .fm-site-row .fm-input,
 .fm-popup .fm-site-row .fm-btn {margin-bottom: 0;}
 
-/* ---- allowed sites list ---- */
+/* allowed sites list */
 
 .fm-site-row {display: flex; gap: 8px; margin-bottom: 10px;}
 .fm-site-row .fm-input {flex: 1;}
@@ -133,7 +127,7 @@
 
 .fm-empty {font-size: 12px; color: var(--fm-green-dim); margin: 0 0 8px;}
 
-/* ---- lock overlay (inside content.js shadow root) ---- */
+/* lock overlay (inside content.js shadow root) */
 
 .fm-overlay {
     position: fixed;
