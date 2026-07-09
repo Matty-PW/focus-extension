@@ -13,7 +13,7 @@ A Chrome extension that locks tab switching behind a typed passphrase, so you ha
 
 1. Clone or download this repository.
 2. Open `chrome://extensions` in Chrome.
-3. Enable Developer mode (top right).
+3. Enable Developer mode.
 4. Click Load unpacked and select this directory.
 5. Click the extension icon to set a passphrase and turn Focus Mode on.
 
