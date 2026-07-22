@@ -11,11 +11,11 @@ A Chrome extension that locks tab switching behind a typed passphrase, so you ha
 
 ## Install
 
-1. Clone or download this repository.
+1. Clone this repository `git clone https://github.com/Matty-PW/focus-extension.git`.
 2. Open `chrome://extensions` in Chrome.
 3. Enable Developer mode.
 4. Click Load unpacked and select this directory.
-5. Click the extension icon to set a passphrase and turn Focus Mode on.
+5. Click the extension icon to set a phrase and turn Focus Mode on.
 
 ## Notes
 
