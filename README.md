@@ -1,4 +1,4 @@
-# Focus-extension
+# focus-extension
 
 A Chrome extension that locks tab switching behind a typed passphrase, so you have to consciously "unlock" a distraction instead of tabbing over to it on autopilot.
 
