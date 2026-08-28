@@ -19,11 +19,11 @@ A Chrome extension that locks tab switching behind a typed passphrase, so you ha
 
 ## Notes
 
-- Reload any tabs that were already open before you loaded the extension — content scripts don't inject into existing pages until they're reloaded.
+- Reload any tabs that were already open before you loaded the extension - content scripts don't inject into existing pages until they're reloaded.
 - Allowed sites match subdomains too (allowing `example.com` also allows `docs.example.com`)
 
 ## Permissions
 
-- `tabs` — detect tab switches (`chrome.tabs.onActivated`) and message the active tab.
-- `storage` — store the phrase, on/off state, and allowed sites in `chrome.storage.local`.
-- `activeTab` — read the current tab's URL when adding it to the allowlist.
+- `tabs` - detect tab switches (`chrome.tabs.onActivated`) and message the active tab.
+- `storage` - store the phrase, on/off state, and allowed sites in `chrome.storage.local`.
+- `activeTab` - read the current tab's URL when adding it to the allowlist.
