@@ -9,7 +9,7 @@ const addCurrentBtn = document.getElementById("add-current-btn")
 const allowedList = document.getElementById("allowed-list")
 const allowedEmpty = document.getElementById("allowed-empty")
 
-// when popup opens, load saved settings
+
 chrome.storage.local.get(["focusActive", "focusPhrase", "allowedSites", "keepFocusOnUnlock"], (data) => {
     if (data.focusPhrase) {
         phraseInput.value = data.focusPhrase
